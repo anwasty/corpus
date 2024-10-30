@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Результаты поиска {% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Главная</a></li>
+        <li><a href="/search">Поиск</a></li>
+        <li><a href="/bigrams">2-граммы</a></li>
+        <li><a href="/trigrams">3-граммы</a></li>
+      </ul>
+    </nav>
+
+    <div style="margin: 50px 10%">
+    <table class="table">
+        {% for i in range(0, results|length) %}
+            <tr>
+                <td scope="row">{{ i + 1 }}</td>
+                <td>{{ results[i][0] }}</td>
+                <td>{{ results[i][1] }}</td>
+                <td>{{ results[i][2] }}</td>
+                <td>{{ results[i][3] }}</td>
+                <td>{{ results[i][4] }}</td>
+                <td>{{ results[i][5] }}{% if results[i].ended %}-{{ results[i].ended }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}
